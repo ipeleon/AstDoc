@@ -1,0 +1,23 @@
+Тестовое задание:
+создать докер образы на debian дистрибутивах
+1. asterisk из исходников
+2. БД mysql из deb пакетов
+3. БД redis
+4. application
+
+сборка образов должна выполняться автоматически после вызова из консоли скрипта приложения, скрипт в качестве аргумента получает имя repo на https://hub.docker.com/ логин и пароль
+build_project repo_name repo_login repo_password
+результат:
+1 на https://hub.docker.com/ должны быть опубликованы образы test_asterisk, test_mysql, test_redis, test_application
+2 локально образы должны быть удалены с linux сервера после сборки и публикации
+3 должны быть созданы и запущены systemd unit-ы
+4 запущены 4 docker контейнера (test_asterisk, test_mysql, test_redis, test_application) котор
+
+application:
+1 asterisk должен быть преднастроен, на нем можно зарегистрировать SIP софтфон
+2 звонок с SIP софтфона на номер 0000 - на asterisk запускается эхо тест (я говорю, asterisk возвращает эхо)
+3 asterisk сохраняет cdr данные в mysql БД
+4 в redis создать импровизированную очередь, в которую можно добавить задание на callback. rpush callback цифра_от_0_до_9
+5 application получает из ключа callback задание, отправляет команду на asterisk сделать звонок на SIP софтфон и проговорить цифру в очереди после того как на SIP софтфоне будет снята трубка
+
+опубликовать решение задачи на github.com
